@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <title>Do you love anna?</title>
+    <style>
+      * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffe6e9;
+  font-family: "Quicksand", sans-serif;
+  height: 100vh; /* Ensure full height alignment */
+  overflow: hidden; /* Stop scrollbars when button gets huge */
+}
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; /* Mobile friendly width */
+  max-width: 600px;
+  text-align: center;
+}
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.tenor-gif-embed {
+  height: 15rem;
+  pointer-events: none;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.question {
+  font-size: 2.5rem; /* Slightly smaller for mobile safety */
+  margin-bottom: 1.5rem;
+  color: #d32f2f;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap; /* Allows buttons to wrap if they get huge */
+}
+
+.btn {
+  border: none;
+  border-radius: 50px;
+  padding: 15px 30px; /* Larger touch target */
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #ff6b81;
+  color: white;
+  box-shadow: 0px 4px 15px rgba(255, 107, 129, 0.5);
+}
+
+/* Removed hover effects that might interfere with growing logic on mobile */
+.btn:active {
+  transform: scale(0.95);
+}
+
+.result-container {
+  display: none; /* Hidden by default */
+}
+
+.gif-result {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.result-container h2 {
+  font-size: 2.5rem;
+  color: #d32f2f;
+}
+
+/* --- Keep all your Heart Loader CSS below exactly as it was --- */
+.cssload-main {
+  display: none;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.cssload-main * {
+  font-size: 62px;
+}
+
+.cssload-heart {
+  animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+  position: relative;
+}
+
+.cssload-heartL {
+  width: 1em;
+  height: 1em;
+  border: 1px solid #ff0000;
+  background-color: #ff0000;
+  content: "";
+  position: absolute;
+  display: block;
+  border-radius: 100%;
+  animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+  transform: translate(-28px, -27px);
+}
+
+.cssload-heartR {
+  width: 1em;
+  height: 1em;
+  border: 1px solid #ff0000;
+  background-color: #ff0000;
+  content: "";
+  position: absolute;
+  display: block;
+  border-radius: 100%;
+  transform: translate(28px, -27px);
+  animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+}
+
+.cssload-square {
+  width: 1em;
+  height: 1em;
+  border: 1px solid #ff0000;
+  background-color: #ff0000;
+  position: relative;
+  display: block;
+  content: "";
+  transform: scale(1) rotate(-45deg);
+  animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+}
+
+.cssload-shadow {
+  top: 30px;
+  left: 50%;
+  content: "";
+  position: relative;
+  display: block;
+  width: 1em;
+  height: 0.24em;
+  background-color: rgb(215, 215, 215);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+}
+
+/* Keyframes (kept exactly as you provided) */
+@keyframes cssload-square { 50% { border-radius: 100%; transform: scale(0.5) rotate(-45deg); } 100% { transform: scale(1) rotate(-45deg); } }
+@keyframes cssload-heart { 50% { transform: rotate(360deg); } 100% { transform: rotate(720deg); } }
+@keyframes cssload-heartL { 60% { transform: scale(0.4); } }
+@keyframes cssload-heartR { 40% { transform: scale(0.4); } }
+@keyframes cssload-shadow { 50% { transform: translateX(-50%) scale(0.5); border-color: rgb(228, 228, 228); } }
+    </style>
+  </head>
+  <body>
+    
+    <div class="question-container container">
+      <div
+        class="tenor-gif-embed"
+        data-postid="25789758"
+        data-share-method="host"
+        data-width="100%"
+      >
+        <a href="https://tenor.com/view/tkthao219-bubududu-gif-25789758"
+          >Tkthao219 Bubududu Sticker</a
+        >from
+        <a href="https://tenor.com/search/tkthao219-stickers"
+          >Tkthao219 Stickers</a
+        >
+      </div>
+      <script
+        type="text/javascript"
+        async
+        src="https://tenor.com/embed.js"
+      ></script>
+
+      <h2 class="question" id="question-text">Do you love your Anna?</h2>
+      
+      <div class="button-container">
+        <button class="yes-btn btn js-yes-btn">Yes</button>
+        <button class="no-btn btn js-no-btn">No</button>
+      </div>
+    </div>
+
+    
+
+<div class="result-container container">
+  <video class="gif-result" src="cute love gif.mp4" autoplay loop muted></video>
+  <h2>I knew it , yeahhhhhhh</h2>
+</div>
+
+    <div class="cssload-main">
+      
+      <div class="cssload-heart">
+        <span class="cssload-heartL"></span>
+        <span class="cssload-heartR"></span>
+        <span class="cssload-square"></span>
+      </div>
+      <div class="cssload-shadow"></div>
+    </div>
+
+    <script>
+      const questionContainer = document.querySelector(".question-container");
+const resultContainer = document.querySelector(".result-container");
+const gifResult = document.querySelector(".gif-result");
+const heartLoader = document.querySelector(".cssload-main");
+const yesBtn = document.querySelector(".js-yes-btn");
+const noBtn = document.querySelector(".js-no-btn");
+const questionText = document.getElementById("question-text");
+
+// Track which question we are on
+let step = 1;
+
+// "No" button functionality (Mobile Friendly)
+noBtn.addEventListener("click", () => {
+  // Make Yes button bigger
+  const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+  const newSize = currentSize * 1.5; 
+  yesBtn.style.fontSize = `${newSize}px`;
+  
+  // Funny sibling texts when she clicks "No"
+  const noTexts = [
+    "Don't lie!", 
+    "I'll tell mom!", 
+    "Cheater!", 
+    "Aiyoo don't click No!"
+  ];
+  const randomText = noTexts[Math.floor(Math.random() * noTexts.length)];
+  noBtn.innerText = randomText;
+});
+
+// "Yes" button functionality
+yesBtn.addEventListener("click", () => {
+  if (step === 1) {
+    // Step 2: Confirmation
+    step = 2;
+    questionText.innerText = "Do you admit I am the best brother?";
+    resetButtons();
+  } else if (step === 2) {
+    // Step 3: Ask for photo
+    step = 3;
+    questionText.innerText = "Can I get a cute photo?"; 
+    resetButtons();
+  } else if (step === 3) {
+    // Final: Show Result
+    showResult();
+  }
+});
+
+function resetButtons() {
+  yesBtn.style.fontSize = "18px";
+  noBtn.innerText = "No";
+}
+
+function showResult() {
+  questionContainer.style.display = "none";
+  heartLoader.style.display = "block";
+
+  const timeoutId = setTimeout(() => {
+    heartLoader.style.display = "none";
+    resultContainer.style.display = "block";
+    if(gifResult) {
+        gifResult.play();
+    }
+  }, 3000);
+}
+    </script>
+  </body>
+</html>
